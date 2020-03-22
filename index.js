@@ -5,7 +5,6 @@ const { applyRoutes, applyMiddleware, connectDB } = require("./utils");
 const middleware = require("./middleware");
 const routes = require("./routes");
 const errorHandlers = require("./middleware/errorHandlers");
-const path = require("path");
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST || "127.0.0.1";
 

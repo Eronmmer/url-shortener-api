@@ -5,15 +5,25 @@ const Url = new mongoose.Schema({
 	longLink: String,
 	shortLink: String,
 	linkID: String,
-	numberOfClicks: Number,
+	numberOfClicks: {
+		type: Number,
+		default: 0
+	},
 	clickInsights: [{
-		device: String,
-		location: String,
-		browser: String
+		shortLink: String,
+		device: {
+			mobile: Boolean,
+			os: String
+		},
+		browser: {
+			name: String,
+			version: String,
+		},
+		time: String
 	}],
 	date: {
 		type: String,
-		default: Date.now
+		default: `${new Date().toDateString()}, ${new Date().toTimeString()}`
 	}
 });
 
