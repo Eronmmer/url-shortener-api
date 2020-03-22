@@ -16,6 +16,21 @@ const connectDB = async () => {
 	}
 }
 
+const applyRoutes = (routes, router) => {
+  routes.forEach(individualRoute => {
+    router.use(individualRoute.endpoint, individualRoute.route);
+  });
+};
+
+const applyMiddleware = (middleware, router) => {
+  middleware.forEach(individualMiddleware => {
+    individualMiddleware(router);
+  });
+};
+
+
 module.exports = {
-	connectDB
+	connectDB,
+	applyRoutes,
+	applyMiddleware
 }
