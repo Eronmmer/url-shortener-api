@@ -8,7 +8,7 @@ const handleNotFound = router => {
 const handlerServerError = router => {
   router.use((err, req, res, next) => {
     res.statusCode = 500;
-    console.error(`${err}`.red.bold.underline);
+    console.error(err);
     res.send("Internal Server Error!!");
     next(err);
   });

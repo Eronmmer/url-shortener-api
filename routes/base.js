@@ -26,7 +26,17 @@ router.get("/:linkID", async (req, res, next) => {
 			}
 			url.clickInsights.unshift(clickInsight);
 			await url.save();
-			res.redirect(url.longLink);
+			const expression = /(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/gi;
+			const regex = new RegExp(expression);
+			if (url.longLink.match(regex)) {
+				console.log(url.longLink, "not modified");
+				res.status(301).redirect(url.longLink);
+			} else {
+				console.log(`http://${url.longLink}`)
+				console.log(url.longLink, "modified");
+				res.status(301).redirect(`http://${url.longLink}`);
+			}
+			
 		}
 	} catch (err) {
 		next(err);
