@@ -12,7 +12,7 @@ const HOST = process.env.HOST || "127.0.0.1";
 connectDB();
 
 app.get("/", (req, res) => {
-	res.send("Welcome to my API bruhh...");
+	res.send("You ain't supposed to be here but welcome anyways😈😈.");
 });
 
 // load middleware
