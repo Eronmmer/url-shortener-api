@@ -11,7 +11,7 @@ router.post("/", check("longLink", "Please include a valid link").isURL(), async
 			return res.status(422).json({ errors: errors.array() });
 		}
 		const { longLink } = req.body;
-		const baseLink = "http://localhost:5500";
+		const baseLink = "http://kut.glitch.me";
 
 		const url = await Url.findOne({ longLink });
 		if (url) {

@@ -13,7 +13,7 @@ Just messing around with Express.js
 ## Usage
 
 - `npm install`, 
-- create your .env file and add your MONGO_URI and jsonwebtoken(later) details, 
+- create your .env file and add your MONGO_URI and JWT_SECRET(later) details, 
 - `npm run dev`
 
 
