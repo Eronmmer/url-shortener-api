@@ -22,7 +22,7 @@ router.get("/:linkID", async (req, res, next) => {
 					name: browserResult.name,
 					version: browserResult.version
 				},
-				date: `${new Date().toDateString()}, ${new Date().toTimeString()}`
+				time: `${new Date().toDateString()}, ${new Date().toTimeString()}`
 			}
 			url.clickInsights.unshift(clickInsight);
 			await url.save();
