@@ -17,7 +17,7 @@ Just messing around with Express.js
 
 - run `npm install`, 
 - create your `.env` file and add your MONGO_URI, BASE_LINK and JWT_SECRET variables, 
-- when running locally, you could set your BASE_LINK variable to "http://127.0.0.1:500" since I set the app to run on port 5000 locally.
+- when running locally, you could set your BASE_LINK variable to "http://127.0.0.1:5000" since I set the app to run on port 5000 locally.
 - run `npm run dev`
 
 ## Endpoints 
