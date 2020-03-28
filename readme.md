@@ -19,13 +19,7 @@ Just messing around with Express.js
 
 ## Todos
 
-- Users can sign up, login.
-
-- Users can see the number of clicks their links have had along with some info about of each device that made a click.
-
-- Users can revoke a link, change it's destination.
-
-- Only authenticated users can do the above two. Visitors can only shorten links and be given back these shortened links.
+- authenticated users should be able to customize their short links.
 
 - Build a React FE to bring this API to life.
 
