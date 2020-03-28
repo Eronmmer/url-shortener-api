@@ -21,6 +21,27 @@ router.get("/", authenticator, async (req, res, next) => {
 	}
 });
 
+// get a particular link with details (authenticated users only)
+router.get("/:linkID", authenticator, async (req, res, next) => {
+	try {
+		const link = await Url.findById(req.params.linkID);
+		if (!link) {
+			return res.status(404).json({ msg: "Link could not be found" });
+		}
+
+		if (!link.user || link.user.toString() !== req.user.id) {
+			return res.status(401).json({ msg: "Not authorized" });
+		}
+
+		res.json({ link });
+	} catch (err) {
+		if (err.kind === "ObjectId") {
+			return res.status(404).json({ msg: "Link could not be found" });
+		}
+		next(err);
+	}
+});
+
 // shorten link
 router.post(
 	"/",
@@ -80,6 +101,9 @@ router.put("/:linkID", authenticator, async (req, res, next) => {
 		link.save();
 		res.json({ msg: "Destination of link successfully changed.", link });
 	} catch (err) {
+		if (err.kind === "ObjectId") {
+			return res.status(404).json({ msg: "Link could not be found" });
+		}
 		next(err);
 	}
 });
@@ -100,6 +124,9 @@ router.delete("/:linkID", authenticator, async (req, res, next) => {
 
 		res.json({ msg: "Link has been successfully revoked" });
 	} catch (err) {
+		if (err.kind === "ObjectId") {
+			return res.status(404).json({ msg: "Link could not be found" });
+		}
 		next(err);
 	}
 });
